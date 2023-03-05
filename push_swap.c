@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 16:58:06 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/03/05 20:47:17 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/03/05 21:44:24 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_sort_fivearg(t_data *data)
 	int	side;
 
 	min = INT_MIN;
-	while (data->a_size > 3)
+	while (data->a_size >= 3)
 	{
 		i = ft_array_minidx(data->stack_a, data->a_size, min);
 		min = data->stack_a[i];
@@ -68,6 +68,10 @@ int	main(int ac, char **av)
 		data = malloc(sizeof(t_data));
 		data->total_size = check_numbers(ac, av);
 		ft_numprocess(data, ac, av);
+		if (ac == 2)
+			return (0);
+		if (check_sorted(data) == 1)
+			return (0);
 		ft_array_numidx(data);
 		if (data->total_size > 5)
 		{
@@ -78,12 +82,7 @@ int	main(int ac, char **av)
 			ft_sort_fivearg(data);
 		while (!check_stack(data))
 			ft_rotate(data, 'a');
-		if (check_stack(data) == 1)
-		{
-			free(data);
-			return (0);
-		}
 	}
 	else
-		ft_error("Hatalı kullanım!");
+		ft_error("Hatalı kullanım.");
 }

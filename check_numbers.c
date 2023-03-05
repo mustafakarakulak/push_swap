@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 16:58:00 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/03/05 20:12:55 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/03/05 21:39:18 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,21 @@ int	check_stack(t_data *p)
 		else
 			return (0);
 	}
+	return (1);
+}
+
+int	check_sorted(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->a_size - 1)
+	{
+		if (data->stack_a[i] > data->stack_a[i + 1])
+			i++;
+		else
+			return (0);
+	}
+	ft_putstr("Sıralı argüman dizisi gönderdiniz\n");
 	return (1);
 }

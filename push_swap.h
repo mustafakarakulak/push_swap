@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 16:58:09 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/03/05 17:42:12 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/03/05 21:27:22 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
+# include <stdio.h>
 
 typedef struct s_data
 {
@@ -31,6 +32,7 @@ int		check_numbers(int ac, char **av);
 int		check_samenum(int *arr, int n, int index, int size);
 int		ft_check_number(char *str, int *is_num);
 int		check_stack(t_data *p);
+int		check_sorted(t_data *data);
 
 void	ft_array_numidx(t_data *p);
 int		ft_array_minidx(int *arr, size_t size, int start);
