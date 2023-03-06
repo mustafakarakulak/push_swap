@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 16:58:09 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/03/05 21:27:22 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/03/06 15:06:37 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_data
 int		check_numbers(int ac, char **av);
 int		check_samenum(int *arr, int n, int index, int size);
 int		ft_check_number(char *str, int *is_num);
-int		check_stack(t_data *p);
+int		check_stack(t_data *data);
 int		check_sorted(t_data *data);
 
 void	ft_array_numidx(t_data *p);

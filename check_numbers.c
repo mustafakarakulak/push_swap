@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 16:58:00 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/03/05 21:39:18 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/03/06 16:17:03 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,25 @@ int	check_numbers(int ac, char **av)
 	int	i;
 	int	j;
 	int	is_num;
-	int	c_total;
+	int	total_num;
 
 	i = 1;
-	c_total = 0;
-	while (i < ac)
+	total_num = 0;
+	while (i <= ac - 1)
 	{
-		if (!ft_strlen(av[i]))
-			ft_error("Error:");
+		//if (!ft_strlen(av[i]))
+		//	ft_error("Error:");
 		j = 0;
 		while (av[i][j])
 		{
 			is_num = 0;
 			j += ft_check_number(&av[i][j], &is_num);
 			if (is_num)
-				c_total++;
+				total_num++;
 		}
 		i++;
 	}
-	return (c_total);
+	return (total_num);
 }
 
 int	ft_check_number(char *str, int *is_num)
@@ -72,14 +72,14 @@ int	check_samenum(int *arr, int n, int index, int size)
 	return (0);
 }
 
-int	check_stack(t_data *p)
+int	check_stack(t_data *data)
 {
 	int	i;
 
 	i = 0;
-	while (i < p->a_size - 1)
+	while (i < data->a_size - 1)
 	{
-		if (p->stack_a[i] > p->stack_a[i + 1])
+		if (data->stack_a[i] > data->stack_a[i + 1])
 			i++;
 		else
 			return (0);

@@ -12,16 +12,16 @@
 
 #include "../push_swap.h"
 
-int	ft_init(t_data *p)
+int	ft_init(t_data *data)
 {
-	p->stack_a = malloc(sizeof(int) * p->total_size);
-	if (!p->stack_a)
+	data->stack_a = malloc(sizeof(int) * data->total_size);
+	if (!data->stack_a)
 		return (ft_error("Error: Allocation error A"));
-	p->stack_b = malloc(sizeof(int) * p->total_size);
-	if (!p->stack_b)
+	data->stack_b = malloc(sizeof(int) * data->total_size);
+	if (!data->stack_b)
 		return (ft_error("Error: Allocation error B"));
-	p->a_size = 0;
-	p->b_size = 0;
+	data->a_size = 0;
+	data->b_size = 0;
 	return (1);
 }
 
@@ -37,11 +37,11 @@ int	ft_atoi(char *str)
 			sign = -1;
 	while (*str && *str >= '0' && *str <= '9')
 	{
-		result = result * 10 + (*str - '0');
+		result = result * 10 + (*str - 48);
 		if (result * sign > INT_MAX)
-			return (ft_error("Error"));
+			return (ft_error("Maksimum integer değerinden büyük sayı var."));
 		if (result * sign < INT_MIN)
-			return (ft_error("Error"));
+			return (ft_error("Minimum integer değerinden küçük sayı var."));
 		str++;
 	}
 	return ((int)result * sign);
