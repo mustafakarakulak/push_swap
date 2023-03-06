@@ -16,10 +16,10 @@ int	ft_init(t_data *data)
 {
 	data->stack_a = malloc(sizeof(int) * data->total_size);
 	if (!data->stack_a)
-		return (ft_error("Error: Allocation error A"));
+		return (ft_error("Error: Stack A"));
 	data->stack_b = malloc(sizeof(int) * data->total_size);
 	if (!data->stack_b)
-		return (ft_error("Error: Allocation error B"));
+		return (ft_error("Error: Stack B"));
 	data->a_size = 0;
 	data->b_size = 0;
 	return (1);

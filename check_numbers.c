@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 16:58:00 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/03/06 16:17:03 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/03/06 17:48:38 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,10 @@ int	ft_check_number(char *str, int *is_num)
 	while (str[i] && str[i] != 32)
 	{
 		if (!(str[i] >= '0' && str[i] <= '9'))
-			return (ft_error("Error: Geçersiz argüman var!"));
+		{
+			ft_putstr(str);
+			return (ft_error("\nError: Geçersiz argüman var!"));
+		}
 		i++;
 	}
 	*is_num = i;

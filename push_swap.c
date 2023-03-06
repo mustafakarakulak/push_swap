@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 16:58:06 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/03/06 15:10:23 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/03/06 17:41:04 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_sort_threearg(t_data *data)
 {
-	if (data->a_size > 3)
+	if (data->a_size == 3)
 	{
 		if (ft_array_minidx(data->stack_a, data->a_size, INT_MIN) == 0)
 		{
@@ -46,7 +46,7 @@ void	ft_sort_fivearg(t_data *data)
 	int	side;
 
 	min = INT_MIN;
-	while (data->a_size >= 3)
+	while (data->a_size > 3)
 	{
 		i = ft_array_minidx(data->stack_a, data->a_size, min);
 		min = data->stack_a[i];
@@ -66,10 +66,10 @@ int	main(int ac, char **av)
 	if (ac > 1)
 	{
 		data = malloc(sizeof(t_data));
-		data->total_size = check_numbers(ac, av);
-		ft_numprocess(data, ac, av);
 		if (ac == 2)
 			return (0);
+		data->total_size = check_numbers(ac, av);
+		ft_numprocess(data, ac, av);
 		if (check_sorted(data) == 1)
 			return (0);
 		ft_array_numidx(data);
