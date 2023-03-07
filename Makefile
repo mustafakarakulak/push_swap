@@ -17,4 +17,9 @@ fclean: clean
 
 re: fclean all
 
+git:
+	git add .
+	git commit -m "deneme"
+	git push
+
 .PHONY:  all clean fclean re
