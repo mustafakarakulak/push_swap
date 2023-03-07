@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 16:58:16 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/03/06 16:26:01 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/03/07 15:57:16 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ int	ft_get_totalmove(t_data *data, int index, int *index_a)
 	count = ft_abs(ft_get_movecount(data->b_size, index));
 	if (*index_a == -1)
 		return (ft_error("Error:"));
-	count++;
-	count = ft_abs(ft_get_movecount(data->a_size, *index_a));
+	count += ft_abs(ft_get_movecount(data->a_size, *index_a));
 	return (count);
 }
