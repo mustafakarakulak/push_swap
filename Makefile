@@ -19,6 +19,7 @@ re: fclean all
 
 git:
 	git add .
+	git status
 	git commit -m "deneme"
 	git push
 
