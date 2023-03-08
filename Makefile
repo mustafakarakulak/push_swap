@@ -20,7 +20,7 @@ re: fclean all
 git:
 	git add .
 	git status
-	git commit -m "deneme"
+	git commit -m "not finished"
 	git push
 
 .PHONY:  all clean fclean re git
