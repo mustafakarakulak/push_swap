@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 16:58:32 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/03/06 18:46:02 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/03/08 15:25:32 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,10 @@ int	ft_array_minidx(int *arr, unsigned long size, int start)
 
 	i = -1;
 	while (++i < size)
+	{
 		if (arr[i] > start)
 			second = i;
+	}
 	i = -1;
 	while (++i < size)
 	{

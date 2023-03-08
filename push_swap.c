@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 16:58:06 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/03/08 01:46:55 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/03/08 16:13:54 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	main(int ac, char **av)
 		data = malloc(sizeof(t_data));
 		data->total_size = check_numbers(ac, av);
 		ft_numprocess(data, ac, av);
-		if (ac == 2)
+		if (data->total_size <= 1)
 			return (0);
 		if (check_sorted(data) == 1)
 			return (0);

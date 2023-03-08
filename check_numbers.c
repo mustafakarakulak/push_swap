@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 16:58:00 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/03/07 22:35:12 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/03/08 16:12:21 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,5 @@ int	check_sorted(t_data *data)
 		else
 			return (0);
 	}
-	ft_putstr("Sıralı argüman dizisi gönderdiniz\n");
 	return (1);
 }
