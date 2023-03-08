@@ -7,7 +7,7 @@ NAME = push_swap
 
 all: $(NAME)
 
-$(NAME) : $(SOURCES)
+$(NAME):
 	gcc -Wall -Wextra -Werror $(SOURCES) -o $(NAME)
 
 clean:
@@ -23,4 +23,4 @@ git:
 	git commit -m "deneme"
 	git push
 
-.PHONY:  all clean fclean re
+.PHONY:  all clean fclean re git
