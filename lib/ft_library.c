@@ -39,9 +39,9 @@ int	ft_atoi(char *str)
 	{
 		result = result * 10 + (*str - 48);
 		if (result * sign > INT_MAX)
-			return (ft_error("Maksimum integer değerinden büyük sayı var."));
+			return (ft_error("Error"));
 		if (result * sign < INT_MIN)
-			return (ft_error("Minimum integer değerinden küçük sayı var."));
+			return (ft_error("Error"));
 		str++;
 	}
 	return ((int)result * sign);

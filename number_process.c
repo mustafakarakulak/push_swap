@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 16:58:03 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/03/06 18:29:46 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/03/08 01:46:19 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	ft_putnumber(t_data *data, char *str)
 	number = ft_atoi(str);
 	if (check_samenum(data->stack_a, number,
 			data->total_size - data->a_size, data->total_size) == 1)
-		ft_error("Aynı sayı, birden fazla mevcut!");
+		ft_error("Error");
 	ft_array_push(data->stack_a, (data->total_size - 1)
 		- data->a_size++, number);
 }
