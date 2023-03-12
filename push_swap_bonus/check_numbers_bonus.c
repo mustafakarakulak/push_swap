@@ -1,41 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_numbers.c                                    :+:      :+:    :+:   */
+/*   check_numbers_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/04 16:58:00 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/03/12 16:53:02 by mkarakul         ###   ########.fr       */
+/*   Created: 2023/03/12 15:59:29 by mkarakul          #+#    #+#             */
+/*   Updated: 2023/03/12 17:23:57 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
-int	check_numbers(int ac, char **av)
+int	ft_check_numbers(int ac, char **av)
 {
 	int	i;
 	int	j;
 	int	is_num;
-	int	total_num;
+	int	c_total;
 
 	i = 1;
-	total_num = 0;
-	while (i <= ac - 1)
+	c_total = 0;
+	while (i < ac)
 	{
-		//if (!ft_strlen(av[i]))
-		//	ft_error("Error");
+		if (!ft_strlen(av[i]))
+			ft_error("Error: Empty argument");
 		j = 0;
 		while (av[i][j])
 		{
 			is_num = 0;
 			j += ft_check_number(&av[i][j], &is_num);
 			if (is_num)
-				total_num++;
+				c_total++;
 		}
 		i++;
 	}
-	return (total_num);
+	return (c_total);
 }
 
 int	ft_check_number(char *str, int *is_num)
@@ -43,24 +43,19 @@ int	ft_check_number(char *str, int *is_num)
 	int	i;
 
 	i = 0;
-	while (str[i] && str[i] == 32)
+	while (str[i] && str[i] == ' ')
 		i++;
 	if (str[i] == '+' || str[i] == '-')
-	{
-		if (!(str[i + 1] >= '0' && str[i + 1] <= '9'))
-			return (ft_error("Error"));
 		i++;
-	}
-	while (str[i] && str[i] != 32)
+	while (str[i] && str[i] != ' ')
 	{
 		if (!(str[i] >= '0' && str[i] <= '9'))
-		{
 			return (ft_error("Error"));
-		}
-		i++;
+		*is_num = ++i;
 	}
-	*is_num = i;
-	while (str[i] && str[i] == 32)
+	if (!*is_num)
+		return (ft_error("Error"));
+	while (str[i] && str[i] == ' ')
 		i++;
 	return (i);
 }
@@ -78,29 +73,16 @@ int	check_samenum(int *arr, int n, int index, int size)
 	return (0);
 }
 
-int	check_stack(t_data *data)
+int	ft_check_sorted(t_data *p)
 {
 	int	i;
 
 	i = 0;
-	while (i < data->a_size - 1)
+	if (p->b_size != 0)
+		return (0);
+	while (i < p->total_size - 1)
 	{
-		if (data->stack_a[i] > data->stack_a[i + 1])
-			i++;
-		else
-			return (0);
-	}
-	return (1);
-}
-
-int	check_sorted(t_data *data)
-{
-	int	i;
-
-	i = 0;
-	while (i < data->a_size - 1)
-	{
-		if (data->stack_a[i] > data->stack_a[i + 1])
+		if (p->arr_a[i] > p->arr_a[i + 1])
 			i++;
 		else
 			return (0);
