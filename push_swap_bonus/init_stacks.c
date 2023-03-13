@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 17:58:20 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/03/13 22:39:17 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/03/14 01:20:20 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,14 +84,14 @@ int	init_stacks(int argc, char *argv[], t_stack *stack_a, t_stack *stack_b)
 	stack_a->array = malloc(sizeof(int) * stack_size);
 	if (!(stack_a->array))
 	{
-		write(STDERR_FILENO, "Error\n", 6);
+		write(2, "Error\n", 6);
 		return (1);
 	}
 	stack_b->array = malloc(sizeof(int) * stack_size);
 	if (!(stack_b->array))
 	{
 		free(stack_a->array);
-		write(STDERR_FILENO, "Error\n", 6);
+		write(2, "Error\n", 6);
 		return (1);
 	}
 	stack_a->size = 0;
@@ -105,7 +105,7 @@ int	int_stacks_2(int argc, char **argv, t_stack *stack_a, t_stack *stack_b)
 	{
 		free(stack_a->array);
 		free(stack_b->array);
-		write(STDERR_FILENO, "Error\n", 6);
+		write(2, "Error\n", 6);
 		return (1);
 	}
 	return (0);

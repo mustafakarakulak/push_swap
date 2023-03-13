@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 12:28:53 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/03/13 23:04:03 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/03/14 01:20:27 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	init_instructions(t_program *prg)
 		free_instructions(prg->instr);
 		free(prg->stack_a.array);
 		free(prg->stack_b.array);
-		write(STDERR_FILENO, "Error\n", 6);
+		write(2, "Error\n", 6);
 		return (1);
 	}
 	return (0);
