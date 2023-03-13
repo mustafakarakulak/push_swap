@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/04 12:29:05 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/03/13 07:04:30 by mkarakul         ###   ########.fr       */
+/*   Created: 2023/03/11 12:29:05 by mkarakul          #+#    #+#             */
+/*   Updated: 2023/03/13 07:24:50 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,11 @@ typedef struct s_program
 	int				debug;
 }					t_program;
 
-//checker.c
 int					stack_contains(t_stack *stack, int num);
 
-//init_stacks.c
 int					init_stacks(int argc, char *argv[],
 						t_stack *stack_a, t_stack *stack_b);
 
-// operations.c
 void				reverse_rotate_stack(t_stack *stack);
 void				rotate_stack(t_stack *stack);
 void				push_stack(t_stack *stack1, t_stack *stack2);
