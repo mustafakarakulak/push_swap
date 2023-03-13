@@ -5,52 +5,80 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/12 16:02:50 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/03/12 19:02:08 by mkarakul         ###   ########.fr       */
+/*   Created: 2021/01/04 12:29:05 by mkarakul          #+#    #+#             */
+/*   Updated: 2023/03/13 07:04:30 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECKER_H
 # define CHECKER_H
 
-# include <unistd.h>
 # include <stdlib.h>
-# include <limits.h>
+# include <unistd.h>
 
-typedef struct s_data
+# define _END		"\x1b[0m"
+# define _RED		"\x1b[31m"
+# define _YELLOW	"\x1b[33m"
+# define _GREEN		"\x1b[32m"
+
+# ifndef DEBUG
+#  define DEBUG 0
+# endif
+
+typedef struct s_stack
 {
-	int	*arr_a;
-	int	*arr_b;
-	int	a_size;
-	int	b_size;
-	int	total_size;
-}	t_data;
+	int				*array;
+	size_t			size;
+}					t_stack;
 
-int		ft_strlen(char *str);
-int		intjoin(int **arr, int number, int *size);
-int		ft_putstr(char *str);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
-int		ft_check_numbers(int ac, char **av);
-int		ft_atoi(char *str);
-int		rule_check(char *str, int **steps, int *size, int i);
-int		ft_error(char *s);
-int		check_samenum(int *arr, int n, int index, int size);
-int		ft_check_number(char *str, int *is_num);
-int		ft_check_sorted(t_data *p);
-int		ft_init(t_data *p);
+typedef struct s_instruction
+{
+	char			*line;
+	void			*next;
+}					t_instruction;
 
-void	ft_swap(t_data *p, char check);
-void	ft_rotate(t_data *p, char check);
-void	ft_array_revrotate(int *arr, int size);
-void	ft_push(t_data *p, char check);
-void	ft_array_rotate(int *arr, int size);
-void	ft_array_swap(int *arr, int size);
-void	ft_array_push(int *arr, int size, int value);
-void	ft_read(int **steps, int *size);
-void	ft_revrotate(t_data *p, char check);
-void	try_steps(t_data *p, int *steps, int size, int i);
-void	ft_numprocess(t_data *p, int ac, char **av);
-void	ft_putnumber(t_data *p, char *str);
-void	*ft_calloc(size_t nitems, size_t size);
+typedef struct s_program
+{
+	t_stack			stack_a;
+	t_stack			stack_b;
+	t_instruction	*instr;
+	int				debug;
+}					t_program;
+
+//checker.c
+int					stack_contains(t_stack *stack, int num);
+
+//init_stacks.c
+int					init_stacks(int argc, char *argv[],
+						t_stack *stack_a, t_stack *stack_b);
+
+// operations.c
+void				reverse_rotate_stack(t_stack *stack);
+void				rotate_stack(t_stack *stack);
+void				push_stack(t_stack *stack1, t_stack *stack2);
+void				swap_stack(t_stack *stack);
+
+void				free_instructions(t_instruction *instructions);
+void				execute_instructions(t_instruction *instr, t_stack *stack_a,
+						t_stack *stack_b, int debug);
+int					add_instruction(t_instruction **intructions, char *line);
+int					get_instruction(t_instruction **instructions);
+int					get_instruction2(t_instruction **instructions, char *line);
+
+int					ft_strcmp(const char *s1, const char *s2);
+char				*ft_strdup(const char *str);
+size_t				ft_strlen(const char *s);
+void				ft_putnbr(int n);
+int					ft_atoi(const char *str, int *num);
+
+void				print_stacks(t_stack *stack_a, t_stack *stack_b);
+void				print_instructions(t_instruction *instructions);
+void				print_debug_instruction(t_instruction *instr,
+						t_stack *stack_a, t_stack *stack_b);
+
+void				write_n_char(int n, char c);
+int					size_nbr(int n);
+int					get_max_size_nbr_stack(t_stack *stack);
+int					free_prg(t_program *prg);
 
 #endif

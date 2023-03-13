@@ -5,128 +5,88 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/12 15:59:21 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/03/13 05:48:27 by mkarakul         ###   ########.fr       */
+/*   Created: 2021/01/04 12:28:53 by mkarakul          #+#    #+#             */
+/*   Updated: 2023/03/13 07:06:57 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	try_steps(t_data *p, int *steps, int size, int i)
+int	is_stack_ordered(t_stack *stack)
 {
-	while (++i < size)
+	size_t	i;
+
+	i = 0;
+	while (i < stack->size - 1)
 	{
-		if (steps[i] == 11)
-			ft_swap(p, 'a');
-		else if (steps[i] == 1)
-			ft_swap(p, 'b');
-		else if (steps[i] == 2)
-			ft_swap(p, 'x');
-		else if (steps[i] == 3)
-			ft_push(p, 'a');
-		else if (steps[i] == 4)
-			ft_push(p, 'b');
-		else if (steps[i] == 5)
-			ft_rotate(p, 'a');
-		else if (steps[i] == 6)
-			ft_rotate(p, 'b');
-		else if (steps[i] == 7)
-			ft_rotate(p, 'x');
-		else if (steps[i] == 8)
-			ft_revrotate(p, 'a');
-		else if (steps[i] == 9)
-			ft_revrotate(p, 'b');
-		else if (steps[i] == 10)
-			ft_revrotate(p, 'x');
+		if (stack->array[i] >= stack->array[i + 1])
+			return (1);
+		i++;
 	}
+	return (0);
 }
 
-int	rule_check(char *str, int **steps, int *size, int i)
+int	stack_contains(t_stack *stack, int num)
 {
-	if (!ft_strncmp(str, "ss", 2) && i == 3)
-		return (intjoin(steps, 2, size));
-	else if (!ft_strncmp(str, "rrb", 3) && i == 4)
-		return (intjoin(steps, 9, size));
-	else if (!ft_strncmp(str, "rrr", 3) && i == 4)
-		return (intjoin(steps, 10, size));
-	else if (!ft_strncmp(str, "rra", 3) && i == 4)
-		return (intjoin(steps, 8, size));
-	else if (!ft_strncmp(str, "sa", 2) && i == 3)
-		return (intjoin(steps, 11, size));
-	else if (!ft_strncmp(str, "sb", 2) && i == 3)
-		return (intjoin(steps, 1, size));
-	else if (!ft_strncmp(str, "pa", 2) && i == 3)
-		return (intjoin(steps, 3, size));
-	else if (!ft_strncmp(str, "pb", 2) && i == 3)
-		return (intjoin(steps, 4, size));
-	else if (!ft_strncmp(str, "rr", 2) && i == 3)
-		return (intjoin(steps, 7, size));
-	else if (!ft_strncmp(str, "ra", 2) && i == 3)
-		return (intjoin(steps, 5, size));
-	else if (!ft_strncmp(str, "rb", 2) && i == 3)
-		return (intjoin(steps, 6, size));
-	return (ft_error("amk"));
-}
+	size_t	i;
 
-void	ft_read(int **steps, int *size)
-{
-	char	*str;
-	int		i;
-
-	str = malloc(4);
-	i = read(0, str, 4);
-	while (i && rule_check(str, steps, size, i) != -200)
-		i = read(0, str, 4);
-	free(str);
-}
-
-int	intjoin(int **arr, int number, int *size)
-{
-	int	*temp;
-	int	i;
-
-	i = -1;
-	if (*size == 0)
+	i = 0;
+	while (i < stack->size)
 	{
-		temp = (int *)malloc(sizeof(int));
-		temp[0] = number;
+		if (stack->array[i++] == num)
+			return (1);
 	}
+	return (0);
+}
+
+int	init_instructions(t_program *prg)
+{
+	int			ret;
+	char		buff[1];
+
+	prg->instr = NULL;
+	ret = get_instruction(&prg->instr);
+	while (ret > 0)
+		ret = get_instruction(&prg->instr);
+	if (ret < 0)
+	{
+		buff[0] = ' ';
+		while (buff[0] && read(STDIN_FILENO, &buff, 1))
+			;
+		free_instructions(prg->instr);
+		free(prg->stack_a.array);
+		free(prg->stack_b.array);
+		write(STDERR_FILENO, "Error\n", 6);
+		return (1);
+	}
+	return (0);
+}
+
+int	main(int argc, char *argv[])
+{
+	t_program		prg;
+
+	if (--argc < 1 || (!ft_strcmp(argv[1], "-v") && argc == 1))
+		return (0);
+	prg.debug = 0;
+	if (!ft_strcmp(argv[1], "-v"))
+	{
+		prg.debug = 1;
+		if (init_stacks(--argc, &argv[2], &prg.stack_a, &prg.stack_b))
+			return (1);
+	}
+	else if (init_stacks(argc, &argv[1], &prg.stack_a, &prg.stack_b))
+		return (1);
+	if (init_instructions(&prg))
+		return (1);
+	if (prg.debug)
+		print_instructions(prg.instr);
+	if (prg.debug)
+		print_stacks(&prg.stack_a, &prg.stack_b);
+	execute_instructions(prg.instr, &prg.stack_a, &prg.stack_b, prg.debug);
+	if (is_stack_ordered(&prg.stack_a) || prg.stack_b.size)
+		write(STDOUT_FILENO, "KO\n", 3);
 	else
-	{
-		temp = (int *)malloc(sizeof(int) * (*size) + 1);
-		while (++i < *size)
-			temp[i] = *((*arr) + i);
-		temp[*size] = number;
-	}
-	if (*size > 0)
-		free(*arr);
-	*arr = temp;
-	*size = *size + 1;
-	return (1);
-}
-
-int	main(int ac, char **av)
-{
-	t_data	data;
-	int		*steps;
-	int		size;
-
-	if (ac > 1)
-	{
-		size = 0;
-		data.total_size = ft_check_numbers(ac, av);
-		ft_numprocess(&data, ac, av);
-		ft_read(&steps, &size);
-		try_steps(&data, steps, size, -1);
-		if (ft_check_sorted(&data))
-		{
-			write(1, "OK\n", 3);
-			return (0);
-		}
-		else
-		{
-			write(1, "KO\n", 3);
-			return (0);
-		}
-	}
+		write(STDOUT_FILENO, "OK\n", 3);
+	return (free_prg(&prg));
 }
