@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 01:36:10 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/03/13 21:31:04 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/03/14 01:55:33 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,10 @@ int	get_max_size_nbr_stack(t_stack *stack)
 	return (size);
 }
 
-int	free_prg(t_program *prg)
+int	free_program(t_program *data)
 {
-	free_instructions(prg->instr);
-	free(prg->stack_a.array);
-	free(prg->stack_b.array);
+	free_instructions(data->instr);
+	free(data->stack_a.array);
+	free(data->stack_b.array);
 	return (0);
 }

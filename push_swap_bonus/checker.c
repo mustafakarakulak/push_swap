@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 12:28:53 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/03/14 01:45:58 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/03/14 01:55:25 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,52 +39,50 @@ int	stack_contains(t_stack *stack, int num)
 	return (0);
 }
 
-int	init_instructions(t_program *prg)
+int	init_instructions(t_program *data)
 {
 	int			ret;
 	char		buff[1];
 
-	prg->instr = NULL;
-	ret = get_instruction(&prg->instr);
+	data->instr = NULL;
+	ret = get_instruction(&data->instr);
 	while (ret > 0)
-		ret = get_instruction(&prg->instr);
+		ret = get_instruction(&data->instr);
 	if (ret < 0)
 	{
 		buff[0] = ' ';
 		while (buff[0] && read(STDIN_FILENO, &buff, 1))
 			;
-		free_instructions(prg->instr);
-		free(prg->stack_a.array);
-		free(prg->stack_b.array);
+		free_instructions(data->instr);
+		free(data->stack_a.array);
+		free(data->stack_b.array);
 		write(2, "Error\n", 6);
 		return (1);
 	}
 	return (0);
 }
 
-int	main(int ac, char **av)
+int	main(int ac, char *av[])
 {
-	t_program		prg;
+	t_program		data;
 
-	if (ac == 1)
+	if (--ac < 1 || ac == 1)
 		return (0);
-	if (--ac < 1 && ac == 1)
-		return (0);
-	prg.debug = 0;
+	data.debug = 0;
 	if (!ft_strcmp(av[1], "-v"))
 	{
-		prg.debug = 1;
-		if (init_stacks(--ac, &av[2], &prg.stack_a, &prg.stack_b))
+		data.debug = 1;
+		if (init_stacks(--ac, &av[2], &data.stack_a, &data.stack_b))
 			return (1);
 	}
-	else if (init_stacks(ac, &av[1], &prg.stack_a, &prg.stack_b))
+	else if (init_stacks(ac, &av[1], &data.stack_a, &data.stack_b))
 		return (1);
-	if (init_instructions(&prg))
+	if (init_instructions(&data))
 		return (1);
-	execute_instructions(prg.instr, &prg.stack_a, &prg.stack_b);
-	if (is_stack_ordered(&prg.stack_a) || prg.stack_b.size)
+	execute_instructions(data.instr, &data.stack_a, &data.stack_b);
+	if (is_stack_ordered(&data.stack_a) || data.stack_b.size)
 		write(1, "KO\n", 3);
 	else
 		write(1, "OK\n", 3);
-	return (free_prg(&prg));
+	return (free_program(&data));
 }
