@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 13:18:58 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/03/14 01:44:07 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/03/14 01:46:13 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	swap_stack(t_stack *stack)
 	}
 }
 
-size_t	count_stack_size(int ac, char *av[])
+size_t	count_stack_size(int ac, char **av)
 {
 	size_t	i;
 	size_t	j;

@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 17:58:20 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/03/14 01:43:54 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/03/14 01:46:05 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	fill_stack_arg(char *arg, t_stack *stack, size_t *stack_nb)
 	return (0);
 }
 
-int	fill_stack(int ac, char *av[], t_stack *stack)
+int	fill_stack(int ac, char **av, t_stack *stack)
 {
 	size_t	i;
 	size_t	j;
@@ -76,7 +76,7 @@ int	fill_stack(int ac, char *av[], t_stack *stack)
 	return (0);
 }
 
-int	init_stacks(int ac, char *av[], t_stack *stack_a, t_stack *stack_b)
+int	init_stacks(int ac, char **av, t_stack *stack_a, t_stack *stack_b)
 {
 	size_t		stack_size;
 

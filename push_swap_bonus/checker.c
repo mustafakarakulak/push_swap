@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 12:28:53 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/03/14 01:43:28 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/03/14 01:45:58 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	init_instructions(t_program *prg)
 	return (0);
 }
 
-int	main(int ac, char *av[])
+int	main(int ac, char **av)
 {
 	t_program		prg;
 

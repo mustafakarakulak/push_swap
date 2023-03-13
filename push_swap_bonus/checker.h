@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 12:29:05 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/03/14 01:43:38 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/03/14 01:46:01 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,14 @@ int					stack_contains(t_stack *stack, int num);
 int					int_stacks_2(int ac, char **av,
 						t_stack *stack_a, t_stack *stack_b);
 
-int					init_stacks(int ac, char *av[],
+int					init_stacks(int ac, char **av,
 						t_stack *stack_a, t_stack *stack_b);
 
 void				reverse_rotate_stack(t_stack *stack);
 void				rotate_stack(t_stack *stack);
 void				push_stack(t_stack *stack1, t_stack *stack2);
 void				swap_stack(t_stack *stack);
-size_t				count_stack_size(int ac, char *av[]);
+size_t				count_stack_size(int ac, char **av);
 
 void				free_instructions(t_instruction *instructions);
 void				execute_instructions(t_instruction *instr, t_stack *stack_a,
