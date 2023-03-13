@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 12:28:53 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/03/13 07:24:46 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/03/13 23:04:03 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	main(int argc, char *argv[])
 {
 	t_program		prg;
 
-	if (--argc < 1 || (!ft_strcmp(argv[1], "-v") && argc == 1))
+	if (--argc < 1 && argc == 1)
 		return (0);
 	prg.debug = 0;
 	if (!ft_strcmp(argv[1], "-v"))
@@ -85,8 +85,8 @@ int	main(int argc, char *argv[])
 		print_stacks(&prg.stack_a, &prg.stack_b);
 	execute_instructions(prg.instr, &prg.stack_a, &prg.stack_b, prg.debug);
 	if (is_stack_ordered(&prg.stack_a) || prg.stack_b.size)
-		write(STDOUT_FILENO, "KO\n", 3);
+		write(1, "KO\n", 3);
 	else
-		write(STDOUT_FILENO, "OK\n", 3);
+		write(1, "OK\n", 3);
 	return (free_prg(&prg));
 }

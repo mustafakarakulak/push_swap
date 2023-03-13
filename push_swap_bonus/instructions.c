@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 17:11:04 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/03/13 07:25:04 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/03/13 22:32:47 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ int	add_instruction(t_instruction **instructions, char *line)
 	t_instruction	*tmp;
 	t_instruction	*new;
 
-	if (!(new = malloc(sizeof(t_instruction))))
+	new = malloc(sizeof(t_instruction));
+	if (!(new))
 		return (1);
 	new->line = ft_strdup(line);
 	new->next = NULL;

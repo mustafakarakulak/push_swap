@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 16:58:00 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/03/12 16:53:02 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/03/13 22:48:15 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ int	check_numbers(int ac, char **av)
 	total_num = 0;
 	while (i <= ac - 1)
 	{
-		//if (!ft_strlen(av[i]))
-		//	ft_error("Error");
 		j = 0;
 		while (av[i][j])
 		{

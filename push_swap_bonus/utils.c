@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 01:47:00 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/03/13 21:28:08 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/03/13 22:54:02 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ char	*ft_strdup(const char *str)
 	i = 0;
 	while (str[i])
 		i++;
-	if (!(pt = malloc((i + 1) * sizeof(char))))
+	pt = malloc((i + 1) * sizeof(char));
+	if (!(pt))
 		return (0);
 	i = -1;
 	while (str[++i])
@@ -39,9 +40,9 @@ char	*ft_strdup(const char *str)
 	return (pt);
 }
 
-size_t		ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
-	const char *ptr;
+	const char	*ptr;
 
 	ptr = s;
 	while (*ptr)
@@ -57,7 +58,7 @@ void	ft_putnbr(int n)
 	nnbr = n;
 	if (nnbr < 0)
 	{
-		write(STDOUT_FILENO, "-", 1);
+		write(1, "-", 1);
 		nnbr *= -1;
 	}
 	if (nnbr != 0)
@@ -65,10 +66,10 @@ void	ft_putnbr(int n)
 		if (nnbr / 10 > 0)
 			ft_putnbr(nnbr / 10);
 		c = nnbr % 10 + 48;
-		write(STDOUT_FILENO, &c, 1);
+		write(1, &c, 1);
 	}
 	if (n == 0)
-		write(STDOUT_FILENO, "0", 1);
+		write(1, "0", 1);
 }
 
 int	ft_atoi(const char *str, int *num)

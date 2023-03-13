@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 01:36:10 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/03/13 07:24:53 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/03/13 21:31:04 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	write_n_char(int n, char c)
 {
 	while (n-- > 0)
-		write(STDOUT_FILENO, &c, 1);
+		write(1, &c, 1);
 }
 
 int	size_nbr(int n)
