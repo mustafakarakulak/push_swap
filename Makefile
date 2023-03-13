@@ -8,7 +8,6 @@ BONUS_SRC =		push_swap_bonus/checker.c \
 				push_swap_bonus/operations.c \
 				push_swap_bonus/instructions.c \
 				push_swap_bonus/utils.c \
-				push_swap_bonus/print.c \
 				push_swap_bonus/debug.c \
 				push_swap_bonus/instructions2.c
 

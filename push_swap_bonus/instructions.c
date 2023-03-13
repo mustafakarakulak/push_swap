@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 17:11:04 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/03/13 22:32:47 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/03/14 01:38:47 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	free_instructions(t_instruction *instructions)
 	}
 }
 
-void	execute_instructions(t_instruction *instr,
-t_stack *stack_a, t_stack *stack_b, int debug)
+void	execute_instructions(t_instruction *instr, t_stack *stack_a,
+	t_stack *stack_b)
 {
 	while (instr)
 	{
@@ -46,8 +46,6 @@ t_stack *stack_a, t_stack *stack_b, int debug)
 			reverse_rotate_stack(stack_a);
 		if (!ft_strcmp(instr->line, "rrb") || !ft_strcmp(instr->line, "rrr"))
 			reverse_rotate_stack(stack_b);
-		if (debug)
-			print_debug_instruction(instr, stack_a, stack_b);
 		instr = instr->next;
 	}
 }

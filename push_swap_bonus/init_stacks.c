@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 17:58:20 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/03/14 01:20:20 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/03/14 01:43:54 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	fill_stack_arg(char *arg, t_stack *stack, size_t *stack_nb)
 	return (0);
 }
 
-int	fill_stack(int argc, char *argv[], t_stack *stack)
+int	fill_stack(int ac, char *av[], t_stack *stack)
 {
 	size_t	i;
 	size_t	j;
@@ -66,9 +66,9 @@ int	fill_stack(int argc, char *argv[], t_stack *stack)
 
 	i = 0;
 	j = 0;
-	while (i < (size_t)argc)
+	while (i < (size_t)ac)
 	{
-		ptr = argv[i];
+		ptr = av[i];
 		if (fill_stack_arg(ptr, stack, &j))
 			return (1);
 		i++;
@@ -76,11 +76,11 @@ int	fill_stack(int argc, char *argv[], t_stack *stack)
 	return (0);
 }
 
-int	init_stacks(int argc, char *argv[], t_stack *stack_a, t_stack *stack_b)
+int	init_stacks(int ac, char *av[], t_stack *stack_a, t_stack *stack_b)
 {
 	size_t		stack_size;
 
-	stack_size = count_stack_size(argc, argv);
+	stack_size = count_stack_size(ac, av);
 	stack_a->array = malloc(sizeof(int) * stack_size);
 	if (!(stack_a->array))
 	{
@@ -96,12 +96,12 @@ int	init_stacks(int argc, char *argv[], t_stack *stack_a, t_stack *stack_b)
 	}
 	stack_a->size = 0;
 	stack_b->size = 0;
-	return (int_stacks_2(argc, argv, stack_a, stack_b));
+	return (int_stacks_2(ac, av, stack_a, stack_b));
 }
 
-int	int_stacks_2(int argc, char **argv, t_stack *stack_a, t_stack *stack_b)
+int	int_stacks_2(int ac, char **av, t_stack *stack_a, t_stack *stack_b)
 {
-	if (fill_stack(argc, argv, stack_a))
+	if (fill_stack(ac, av, stack_a))
 	{
 		free(stack_a->array);
 		free(stack_b->array);

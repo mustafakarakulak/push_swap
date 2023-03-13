@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 12:29:05 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/03/13 22:40:38 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/03/14 01:43:38 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,21 +46,21 @@ typedef struct s_program
 }					t_program;
 
 int					stack_contains(t_stack *stack, int num);
-int					int_stacks_2(int argc, char **argv,
+int					int_stacks_2(int ac, char **av,
 						t_stack *stack_a, t_stack *stack_b);
 
-int					init_stacks(int argc, char *argv[],
+int					init_stacks(int ac, char *av[],
 						t_stack *stack_a, t_stack *stack_b);
 
 void				reverse_rotate_stack(t_stack *stack);
 void				rotate_stack(t_stack *stack);
 void				push_stack(t_stack *stack1, t_stack *stack2);
 void				swap_stack(t_stack *stack);
-size_t				count_stack_size(int argc, char *argv[]);
+size_t				count_stack_size(int ac, char *av[]);
 
 void				free_instructions(t_instruction *instructions);
 void				execute_instructions(t_instruction *instr, t_stack *stack_a,
-						t_stack *stack_b, int debug);
+						t_stack *stack_b);
 int					add_instruction(t_instruction **intructions, char *line);
 int					get_instruction(t_instruction **instructions);
 int					get_instruction2(t_instruction **instructions, char *line);
@@ -70,11 +70,6 @@ char				*ft_strdup(const char *str);
 size_t				ft_strlen(const char *s);
 void				ft_putnbr(int n);
 int					ft_atoi(const char *str, int *num);
-
-void				print_stacks(t_stack *stack_a, t_stack *stack_b);
-void				print_instructions(t_instruction *instructions);
-void				print_debug_instruction(t_instruction *instr,
-						t_stack *stack_a, t_stack *stack_b);
 
 void				write_n_char(int n, char c);
 int					size_nbr(int n);

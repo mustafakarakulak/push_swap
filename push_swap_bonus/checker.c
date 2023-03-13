@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 12:28:53 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/03/14 01:20:27 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/03/14 01:43:28 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,28 +62,26 @@ int	init_instructions(t_program *prg)
 	return (0);
 }
 
-int	main(int argc, char *argv[])
+int	main(int ac, char *av[])
 {
 	t_program		prg;
 
-	if (--argc < 1 && argc == 1)
+	if (ac == 1)
+		return (0);
+	if (--ac < 1 && ac == 1)
 		return (0);
 	prg.debug = 0;
-	if (!ft_strcmp(argv[1], "-v"))
+	if (!ft_strcmp(av[1], "-v"))
 	{
 		prg.debug = 1;
-		if (init_stacks(--argc, &argv[2], &prg.stack_a, &prg.stack_b))
+		if (init_stacks(--ac, &av[2], &prg.stack_a, &prg.stack_b))
 			return (1);
 	}
-	else if (init_stacks(argc, &argv[1], &prg.stack_a, &prg.stack_b))
+	else if (init_stacks(ac, &av[1], &prg.stack_a, &prg.stack_b))
 		return (1);
 	if (init_instructions(&prg))
 		return (1);
-	if (prg.debug)
-		print_instructions(prg.instr);
-	if (prg.debug)
-		print_stacks(&prg.stack_a, &prg.stack_b);
-	execute_instructions(prg.instr, &prg.stack_a, &prg.stack_b, prg.debug);
+	execute_instructions(prg.instr, &prg.stack_a, &prg.stack_b);
 	if (is_stack_ordered(&prg.stack_a) || prg.stack_b.size)
 		write(1, "KO\n", 3);
 	else
