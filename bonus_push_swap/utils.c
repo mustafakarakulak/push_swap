@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 01:47:00 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/03/14 01:44:14 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/03/14 02:32:34 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ void	ft_putnbr(int n)
 	long	nnbr;
 
 	nnbr = n;
+	if (n == 0)
+		write(1, "0", 1);
 	if (nnbr < 0)
 	{
 		write(1, "-", 1);
@@ -68,8 +70,6 @@ void	ft_putnbr(int n)
 		c = nnbr % 10 + 48;
 		write(1, &c, 1);
 	}
-	if (n == 0)
-		write(1, "0", 1);
 }
 
 int	ft_atoi(const char *str, int *num)

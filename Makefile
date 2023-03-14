@@ -3,13 +3,13 @@ SOURCES =	check_numbers.c number_process.c push_swap.c sort_codes/sort_pivot.c \
 			utils/utils_arrindex.c lib/ft_library.c utils/utils_pushswap.c \
 			lib/ft_putstr.c lib/ft_strlen.c
 
-BONUS_SRC =		push_swap_bonus/checker.c \
-				push_swap_bonus/init_stacks.c \
-				push_swap_bonus/operations.c \
-				push_swap_bonus/instructions.c \
-				push_swap_bonus/utils.c \
-				push_swap_bonus/debug.c \
-				push_swap_bonus/instructions2.c
+BONUS_SRC =		bonus_push_swap/checker.c \
+				bonus_push_swap/init_stacks.c \
+				bonus_push_swap/operations.c \
+				bonus_push_swap/instructions.c \
+				bonus_push_swap/utils.c \
+				bonus_push_swap/debug.c \
+				bonus_push_swap/instructions2.c
 
 NAME = push_swap
 
