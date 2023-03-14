@@ -56,8 +56,8 @@ int	ft_abs(int nb)
 
 int	ft_error(char *s)
 {
-	ft_putstr(s);
-	ft_putstr("\n");
+	(void)s;
+	write(2, "Error\n", 6);
 	exit(1);
 	return (0);
 }
