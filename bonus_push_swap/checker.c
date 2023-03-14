@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 12:28:53 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/03/14 01:55:25 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/03/14 04:04:06 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	init_instructions(t_program *data)
 	if (ret < 0)
 	{
 		buff[0] = ' ';
-		while (buff[0] && read(STDIN_FILENO, &buff, 1))
+		while (buff[0] && read(0, &buff, 1))
 			;
 		free_instructions(data->instr);
 		free(data->stack_a.array);
